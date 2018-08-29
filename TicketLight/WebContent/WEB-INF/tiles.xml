@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ 
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+
+    <definition name="baseLayout" template="/pages/template/baselayout.jsp">
+		<put-attribute name="header" value="/pages/template/theaterOwnerHeader.jsp"/>
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/pages/template/theaterOwnerFooter.jsp"/>
+	</definition>
+	
+	<definition name="dynamicBaseLayout" template="/pages/template/dynamic_baselayout.jsp">
+		<put-attribute name="header" value="/pages/template/theaterOwnerDashboardHeader.jsp"/>
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/pages/template/theaterOwnerDashboardFooter.jsp"/>
+	</definition>
+	
+	
+	<definition name="userBaseLayout" template="/pages/template/end_user_baselayout.jsp">
+		<put-attribute name="header" value="/pages/template/userHeader.jsp"/>
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/pages/template/userFooter.jsp"/>
+	</definition>
+	
+	<definition name="dynamicBaseLayoutForTicketCounter" template="/pages/template/dynamic_baselayout.jsp">
+		<put-attribute name="header" value="/pages/template/ticketCounterHeader.jsp"/>
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/pages/template/ticketCounterFooter.jsp"/>
+	</definition>
+	
+	<definition name="dynamicBaseLayoutForGovernmentUser" template="/pages/template/dynamic_baselayout.jsp">
+		<put-attribute name="header" value="/pages/template/governmentUserHeader.jsp"/>
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/pages/template/governmentUserFooter.jsp"/>
+	</definition>
+	
+	<definition name="homePageSuccess" extends="baseLayout">
+	<put-attribute name="title" value="Home page" />
+	<put-attribute name="body" value="/pages/Common/welcome.jsp"/>
+	</definition>
+	
+	<definition name="theaterOwnerRegistrationSuccess" extends="baseLayout">
+	<put-attribute name="title" value="Registration" />
+	<put-attribute name="body" value="/pages/TheaterOwner/registration.jsp"/>
+	</definition>
+	
+	<definition name="theaterOwnerLoginSuccess" extends="baseLayout">
+	<put-attribute name="title" value="Login" />
+	<put-attribute name="body" value="/pages/TheaterOwner/login.jsp"/>
+	</definition>
+	
+	<definition name="theaterOwnerRegisterSubmitSuccess" extends="baseLayout">
+	<put-attribute name="title" value="Account activation" />
+	<put-attribute name="body" value="/pages/TheaterOwner/account_activation.jsp"/>
+	</definition>
+	
+	<definition name="forgetPasswordSuccess" extends="baseLayout">
+	<put-attribute name="title" value="forget password" />
+	<put-attribute name="body" value="/pages/Common/forget-password.jsp"/>
+	</definition>
+	
+	<definition name="theaterOwnerLoginSubmitSuccess" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="Dashboard" />
+	<put-attribute name="body" value="/pages/TheaterOwner/dashboard.jsp"/>
+	</definition>
+	
+	<definition name="theaterOwnerViewPage" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="Profile view" />
+	<put-attribute name="body" value="/pages/TheaterOwner/theatre-owner-view-profile.jsp"/>
+	</definition>
+	
+	<definition name="theaterOwnerUpdateSuccess" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="Profile edit" />
+	<put-attribute name="body" value="/pages/TheaterOwner/theatre-owner-edit-profile.jsp"/>
+	</definition>
+	
+	<definition name="changePasswordSuccess" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="change password" />
+	<put-attribute name="body" value="/pages/Common/change-password.jsp"/>
+	</definition>
+	
+	<definition name="addScreenDetailSuccess" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="Add Screen" />
+	<put-attribute name="body" value="/pages/TheaterDetail/add_screen_detail.jsp"/>
+	</definition>
+
+	<!-- created by ramya - 30-07-18 started-->
+	
+	<definition name="addTheaterPageSuccess" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="Add Theater" />
+	<put-attribute name="body" value="/pages/TheaterDetail/add_theater.jsp"/>
+	</definition>
+	
+	<!-- created by ramya - 31-07-18 started-->
+	<definition name="viewTheaterDetailPageSuccess" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="View Theater" />
+	<put-attribute name="body" value="/pages/TheaterDetail/view_theater.jsp"/>
+	</definition>
+	
+	<!-- created by ramya - 02-08-18 started-->
+	<definition name="editTheaterPageSuccess" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="Edit Theater" />
+	<put-attribute name="body" value="/pages/TheaterDetail/edit_theater.jsp"/>
+	</definition>
+	
+<!-- add theater user -->
+	<definition name="addTheaterUserPage" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="Add Theater" />
+	<put-attribute name="body" value="/pages/TheaterDetail/add_theater_user.jsp"/>
+	</definition>
+	
+	<!-- viewTheaterUserPage -->
+	<definition name="viewTheaterUserPage" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="view Theater" />
+	<put-attribute name="body" value="/pages/TheaterDetail/view_theater_user.jsp"/>
+	</definition>
+	
+	<!-- ediTheaterUserPage -->
+	<definition name="ediTheaterUserPage" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="Edit Theater Employee" />
+	<put-attribute name="body" value="/pages/TheaterDetail/edit_theater_user.jsp"/>
+	</definition>
+	
+	<!-- add Movie Page -->
+	<definition name="addMoviePage" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="Edit Theater Employee" />
+	<put-attribute name="body" value="/pages/TheaterDetail/add_movie.jsp"/>
+	</definition>
+	
+	<definition name="ViewScreenDetailSuccess" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="Edit Theater Employee" />
+	<put-attribute name="body" value="/pages/TheaterDetail/add_movie.jsp"/>
+	</definition>
+
+	<!-- edit Movie Page -->
+	<definition name="editMoviePage" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="Edit Theater Employee" />
+	<put-attribute name="body" value="/pages/TheaterDetail/edit_movie.jsp"/>
+	</definition>
+	
+	<definition name="ViewScreenSuccess" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="Edit Theater Employee" />
+	<put-attribute name="body" value="/pages/TheaterDetail/view-screen-detail.jsp"/>
+	</definition>
+
+    <!-- created by ramya -09-08-18 -->
+    
+    <definition name="movieArrangementPageSuccess" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="Movie Arrangement" />
+	<put-attribute name="body" value="/pages/TheaterDetail/movie_arrangement.jsp"/>
+	</definition>
+	
+	<definition name="EditScreenSuccess" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="Edit Theater Employee" />
+	<put-attribute name="body" value="/pages/TheaterDetail/edit-screen-detail.jsp"/>
+	</definition>
+
+
+    <!-- ticket Counter Person started  -->
+    
+    <definition name="ticketCounterLoginSuccess" extends="baseLayout">
+	<put-attribute name="title" value="Login" />
+	<put-attribute name="body" value="/pages/TicketCounterPerson/login.jsp"/>
+	</definition>
+	
+	<definition name="ticketCounterPersonDashboardSuccess" extends="dynamicBaseLayoutForTicketCounter">
+	<put-attribute name="title" value="dashboard Page" />
+	<put-attribute name="body" value="/pages/TicketCounterPerson/dashboard.jsp"/>
+	</definition>
+	
+	
+	<!-- theater-counter-profile-view -->
+	<definition name="ticketCounterPersonProfileSuccess" extends="dynamicBaseLayoutForTicketCounter">
+	<put-attribute name="title" value="view Page" />
+	<put-attribute name="body" value="/pages/TicketCounterPerson/ticketCounterview.jsp"/>
+	</definition>
+	
+	<!-- view Movies In Ticket Counter -->
+    <definition name="viewMoviesInTicketCounter" extends="dynamicBaseLayoutForTicketCounter">
+	<put-attribute name="title" value="view Page" />
+	<put-attribute name="body" value="/pages/TicketCounterPerson/movie_view_counter.jsp"/>
+	</definition>
+	
+   <!-- Government Module started by ramya - 02-08-18 -->
+   
+    <definition name="governmentLoginSuccess" extends="baseLayout">
+	<put-attribute name="title" value="Login" />
+	<put-attribute name="body" value="/pages/GovernmentUser/login.jsp"/>
+	</definition>
+   
+   	<definition name="governmentUserDashboardSuccess" extends="dynamicBaseLayoutForGovernmentUser">
+	<put-attribute name="title" value="dashboard Page" />
+	<put-attribute name="body" value="/pages/GovernmentUser/dashboard.jsp"/>
+	</definition>
+	
+	<definition name="governmentTaxDetailSuccess" extends="dynamicBaseLayoutForGovernmentUser">
+	<put-attribute name="title" value="Tax Page" />
+	<put-attribute name="body" value="/pages/GovernmentUser/taxDetail.jsp"/>
+	</definition>
+	
+
+	<definition name="ticketOrderSummarySuccessPage" extends="dynamicBaseLayoutForTicketCounter">
+	<put-attribute name="title" value="Order Summary" />
+	<put-attribute name="body" value="/pages/TicketCounterPerson/orderSummaryDetail.jsp"/>
+	</definition>
+   
+    <definition name="ticketCounterForgetPasswordSuccess" extends="baseLayout">
+	<put-attribute name="title" value="forget password" />
+	<put-attribute name="body" value="/pages/TicketCounterPerson/forgetPassword.jsp"/>
+	</definition>
+	
+	<definition name="governmentForgetPasswordSuccess" extends="baseLayout">
+	<put-attribute name="title" value="forget password" />
+	<put-attribute name="body" value="/pages/GovernmentUser/forgetPassword.jsp"/>
+	</definition>
+	
+	<definition name="viewMovieSuccess" extends="dynamicBaseLayout">
+	<put-attribute name="title" value="View Movie" />
+	<put-attribute name="body" value="/pages/TheaterDetail/view_movie.jsp"/>
+	</definition>
+	
+	
+	<!-- End User Start -->
+	
+	<definition name="userHomePageSuccess" extends="userBaseLayout">
+	<put-attribute name="title" value="View Movie" />
+	<put-attribute name="body" value="/pages/EndUser/welcome.jsp"/>
+	</definition>
+	
+	<definition name="viewCityAllMovieSuccess" extends="userBaseLayout">
+	<put-attribute name="title" value="All Movies" />
+	<put-attribute name="body" value="/pages/EndUser/all_movies.jsp"/>
+	</definition>
+	
+	<definition name="viewMovieWiseTheaterDetail" extends="userBaseLayout">
+	<put-attribute name="title" value="Movie" />
+	<put-attribute name="body" value="/pages/EndUser/movie.jsp"/>
+	</definition>
+	
+	<definition name="viewTheaterWiseMovieDetail" extends="userBaseLayout">
+	<put-attribute name="title" value="Movie" />
+	<put-attribute name="body" value="/pages/EndUser/theater.jsp"/>
+	</definition>
+	
+	
+	<definition name="userTicketSummarySuccessPage" extends="userBaseLayout">
+	<put-attribute name="title" value="Order Summary" />
+	<put-attribute name="body" value="/pages/EndUser/orderSummaryDetail.jsp"/>
+	</definition>
+	
+    <definition name="viewCitywiseCinemasDetail" extends="userBaseLayout">
+	<put-attribute name="title" value="City Cinemas" />
+	<put-attribute name="body" value="/pages/EndUser/all_theater.jsp"/>
+	</definition>
+
+</tiles-definitions>

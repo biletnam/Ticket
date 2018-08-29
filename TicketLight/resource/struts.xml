@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts 
+PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="20097152" />
+	<constant name="struts.custom.i18n.resources" value="html" />
+	<constant name="struts.enable.SlashesInActionNames" value="true" />
+	<constant name="struts.mapper.alwaysSelectFullNamespace"
+		value="false" />		
+
+	<package name="default" extends="struts-default,json-default" namespace="/">
+	<result-types>
+
+	<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+	</result-types>
+		
+	<global-results>
+			<result name="theater-owner-error" type="tiles">theaterOwnerLoginSuccess</result>
+			<result name="ticket-counter-error" type="tiles">ticketCounterLoginSuccess</result>
+			<result name="government-user-error" type="tiles">governmentLoginSuccess</result>
+			<result name="user-error" type="tiles">userDashboardSuccess</result>
+	</global-results>	
+	
+	<action name="home-page"  class="com.finix.action.TheaterOwnerAction" method="getHomePageDetails">
+	<result name="success" type="tiles">homePageSuccess</result>
+	</action>
+	
+	<action name="theater-owner-registration"  class="com.finix.action.TheaterOwnerAction" method="getRegistrationDetails">
+	<result name="success" type="tiles">theaterOwnerRegistrationSuccess</result>
+	</action>
+	
+	<action name="theater-owner-login">
+	<result name="success" type="tiles">theaterOwnerLoginSuccess</result>
+	</action>
+	
+	<action name="theater-owner-registration-submit"  class="com.finix.action.TheaterOwnerAction" method="setRegistrationDetails">
+	<result name="success" type="tiles">theaterOwnerRegisterSubmitSuccess</result>
+	<result name="error" type="tiles">theaterOwnerRegistrationSuccess</result>
+	</action>
+	
+	<action name="checkTheaterOwnerEmail"  class="com.finix.action.TheaterOwnerAction" method="checkTheaterOwnerEmail">
+	<result name="success" >/pages/Common/emailAvailable.jsp</result>
+	<result name="activation-error" >/pages/Common/emailError.jsp</result>
+	</action>
+	
+	<action name="forget-password">
+	<result name="success" type="tiles">forgetPasswordSuccess</result>
+	</action>
+	
+	<action name="account-activation"  class="com.finix.action.TheaterOwnerAction" method="setAccountActivationDetails">
+	<result name="success" type="tiles">theaterOwnerLoginSuccess</result>
+	<result name="notMatched" type="tiles">theaterOwnerRegisterSubmitSuccess</result>
+	</action>
+	
+
+	<action name="resendConfirmSMS" class="com.finix.action.TheaterOwnerAction" method="resendConfirmSMS">
+	<result name="success" type="json"></result>
+	</action>
+	
+	<action name="resendConfirmMail" class="com.finix.action.TheaterOwnerAction" method="resendConfirmMail">
+	<result name="success" type="json"></result>
+	</action>
+
+	
+	<action name="theater-owner-login-submit" class="com.finix.action.LoginAction" method="setLoginDetails">
+	<result name="theater-owner" type="chain">theater-owner-login-success</result>
+	<result name="theater-owner-activation-failed" type="tiles">theaterOwnerRegisterSubmitSuccess</result>
+	</action>
+	
+	<action name="theater-owner-login-success" class="com.finix.action.TheaterOwnerAction" method="getTheatreTaxDetail">
+	<result name="success" type="tiles">theaterOwnerLoginSubmitSuccess</result>
+	</action>
+	
+	<action name="theater-owner-profile-view" class="com.finix.action.TheaterOwnerAction" method="getProfileViewPage">
+	<result name="success" type="tiles">theaterOwnerViewPage</result>
+	</action>
+	
+	<action name="theater-owner-edit-profile-page" class="com.finix.action.TheaterOwnerAction" method="getEditPage">
+	<result name="success" type="tiles">theaterOwnerUpdateSuccess</result>
+	</action>
+	
+	<action name="theater-owner-update-page" class="com.finix.action.TheaterOwnerAction" method="getUpdatePageDetails">
+	<result name="success" type="tiles">theaterOwnerViewPage</result>
+	</action>
+	
+	<action name="forget-password-submit" class ="com.finix.action.LoginAction" method="getPasswordDetails">
+	<result name ="theater-owner-success" type="tiles">theaterOwnerLoginSuccess</result>
+	<result name ="ticket-counter-success" type="tiles">ticketCounterLoginSuccess</result>
+	<result name ="government-user-success" type="tiles">governmentLoginSuccess</result>
+	<result name="theater-owner-activation" type="tiles">forgetPasswordSuccess</result>
+	<result name="ticket-counter-activation" type="tiles">ticketCounterForgetPasswordSuccess</result>
+	<result name="government-user-activation" type="tiles">governmentForgetPasswordSuccess</result>
+	</action>
+	
+	<action name="getUserProfileImage" class="com.finix.action.TheaterOwnerAction" method="profile_images">
+	<result name="success" type="stream">
+		<param name="contentType">${contentType}</param>
+		<param name="inputName">inputStream</param>
+	</result>
+	</action>
+	
+	<action name="theater-owner-logout" class="com.finix.action.LoginAction" method="setTheaterOwnerLogout">
+	<result name="success" type="tiles">theaterOwnerLoginSuccess</result>
+	</action>
+	
+	<action name="change-password">
+	<result name="success" type="tiles">changePasswordSuccess</result>
+	</action>
+	
+	<action name="checkOldPasswordAvailable" class="com.finix.action.TheaterOwnerAction" method="checkOldPasswordAvailable"> 
+	<result name="success" type="json"/>
+	</action>
+	
+	<action name="change-password-submit" class="com.finix.action.TheaterOwnerAction" method="updatePasswordDetails">
+	<result name="success" type="tiles">theaterOwnerLoginSuccess</result>
+	</action>
+	
+	<action name="getStateWiseCityDetails" class="com.finix.action.TheaterOwnerAction" method="getStateWiseCityDetails">
+	<result name="success" type="json"/>
+	</action>	
+	
+	<action name="add-screen-detail" class="com.finix.action.TheaterOwnerAction" method="setScreenDetails">
+	<result name="success" type="tiles">addScreenDetailSuccess</result>
+	</action>
+	
+	<action name="getScreenImage" class="com.finix.action.TheaterOwnerAction" method="getScreenImage">
+	<result name="success" type="stream">
+		<param name="contentType">${contentType}</param>
+		<param name="inputName">inputStream</param>
+	</result>
+	</action>
+	
+	<action name="getTheaterAgainstScreen" class="com.finix.action.TheaterOwnerAction" method="getTheaterAgainstScreen">
+	<result name="success" type="json"/>
+	</action>
+	
+	<action name="setTheaterWiseScreenDetailSubmit" class="com.finix.action.TheaterOwnerAction" method="setTheaterWiseScreenDetailSubmit">
+	<result name="success" type="json"/>
+	</action>
+	
+	<action name="setTheaterSeatCountDetailSubmit" class="com.finix.action.TheaterOwnerAction" method="setTheaterSeatCountDetailSubmit">
+	<result name="success" type="json"/>
+	</action>
+
+<!-- created by ramya - 30-07-18 started-->
+	<action name="add-theater" class="com.finix.action.TheaterOwnerAction" method="getAddTheaterPageDetails">
+	<result name="add-theater-page" type="tiles">addTheaterPageSuccess</result>
+	<result name="view-theater-page" type="tiles">viewTheaterDetailPageSuccess</result>
+	</action>
+	
+	<action name="districtWiseCityDetail" class="com.finix.action.TheaterOwnerAction" method="districtWiseCityDetail">
+	<result name="success" type="json"/>
+	</action>
+	
+	<action name="getJSONDistrictDetails" class="com.finix.action.TheaterOwnerAction" method="getJSONDistrictDetails">
+	<result name="success" type="json"/>
+	</action>
+	
+	<action name="add-theater-detail" class="com.finix.action.TheaterOwnerAction" method="setAddTheaterDetails">
+	<result name="success" type="chain">add-screen-detail</result>
+	</action>
+	
+	<action name="getJqueryTheaterdetail" class="com.finix.action.TheaterOwnerAction" method="getJqueryTheaterdetail">
+	<result name="success" type="json"/>
+	</action>
+	
+	<action name="getJqueryTheaterBasicScreendetail" class="com.finix.action.TheaterOwnerAction" method="getJqueryTheaterBasicScreendetail">
+	<result name="success" type="json"/>
+	</action>
+	
+	<action name="edit-theater" class="com.finix.action.TheaterOwnerAction" method="editTheaterDetail">
+	<result name="success" type="tiles">editTheaterPageSuccess</result>
+	</action>
+	
+	<action name="delete-theater-detail" class="com.finix.action.TheaterOwnerAction" method="deleteTheaterDetail">
+	<result name="success" type="chain">edit-theater</result>
+	</action>
+	
+	<action name="update-theater-detail" class="com.finix.action.TheaterOwnerAction" method="updateTheaterDetail">
+	<result name="success" type="chain">add-theater</result>
+	</action>
+	
+	<action name="delete-screen-layout-detail" class="com.finix.action.TheaterOwnerAction" method="deleteScreenLayoutDetail">
+	<result name="success" type="chain">edit-theater</result>
+	</action>
+
+    <action name="add-counter-user" class="com.finix.action.TheaterOwnerAction" method="addCounterUser">
+	<result name="success" type="tiles">addTheaterUserPage</result>
+	</action>
+	
+	<action name="theaterAddUserSubmit" class="com.finix.action.TheaterOwnerAction" method="theaterAddUserSubmit">
+	<result name="success" type="chain">view-counter-user</result>
+	</action>
+	
+	<action name="view-counter-user" class="com.finix.action.TheaterOwnerAction" method="viewTheaterEmployee">
+	<result name="success" type="tiles">viewTheaterUserPage</result>
+	</action>
+	
+	
+	<action name="edit-employee-details" class="com.finix.action.TheaterOwnerAction" method="editEmployeeDetails">
+	<result name="success" type="tiles">ediTheaterUserPage</result>
+	</action>
+	
+	<action name="editTheaterEmployee" class="com.finix.action.TheaterOwnerAction" method="editTheaterEmployeeSubmit">
+	<result name="success" type="tiles">viewTheaterUserPage</result>
+	</action>
+	
+	<action name="delete-employee-details" class="com.finix.action.TheaterOwnerAction" method="deleteTheaterEmployee">
+	<result name="success" type="tiles">viewTheaterUserPage</result>
+	</action>
+	
+	<action name="add-movie" class="com.finix.action.TheaterOwnerAction" method="addMovie">
+	<result name="success" type="tiles">addMoviePage</result>
+	</action>
+	
+	
+	<action name="movieDetailsSubmitAction" class="com.finix.action.TheaterOwnerAction" method="movieDetailSubmit">
+	<result name="success" type="chain">add-movie</result>
+	</action>
+	
+	<action name="getMoviePoster" class="com.finix.action.TheaterOwnerAction" method="getMoviePoster">
+	<result name="success" type="stream">
+		<param name="contentType">${contentType}</param>
+		<param name="inputName">inputStream</param>
+	</result>
+	</action>
+		
+	<action name="edit-movie-details" class="com.finix.action.TheaterOwnerAction" method="getMovieDetails">
+	<result name="success" type="tiles">editMoviePage</result>
+	</action>
+		
+	<action name="editMovieDetailsSubmit" class="com.finix.action.TheaterOwnerAction" method="editMovieDetailsSubmit">
+	<result name="success" type="tiles">addMoviePage</result>
+	</action>
+	
+	<action name="getEmployeProfileImage" class="com.finix.action.TheaterOwnerAction" method="getEmployeProfileImage">
+	<result name="success" type="stream">
+		<param name="contentType">${contentType}</param>
+		<param name="inputName">inputStream</param>
+	</result>
+	</action>
+	
+	<action name="view-screen-detail"  class="com.finix.action.TheaterOwnerAction" method="getViewScreenDetails">
+	<result name="success" type="tiles">ViewScreenSuccess</result>
+	</action>
+
+	<action name="delete-movie-details" class="com.finix.action.TheaterOwnerAction" method="deleteMovieDetailsSubmit">
+	<result name="success" type="chain">add-movie</result>
+	</action>
+	
+	<!-- Created by Hemalatha -->
+	
+	<action name="getBasicFloorPlanDetails" class="com.finix.action.TheaterOwnerAction" method="getBasicFloorPlanDetails">
+	<result name="success" type="json"/>
+	</action>
+	
+	
+	<action name="getTheaterAgainstScreenForView" class="com.finix.action.TheaterOwnerAction" method="getTheaterAgainstScreenForView">
+	<result name="success" type="json"/>
+	</action>
+
+	<action name="edit-screen-detail"  class="com.finix.action.TheaterOwnerAction" method="getEditScreenDetails">
+	<result name="success" type="tiles">EditScreenSuccess</result>
+	</action>
+	
+	<action name="getTheaterAgainstScreenForEdit" class="com.finix.action.TheaterOwnerAction" method="getTheaterAgainstScreenForEdit">
+	<result name="success" type="json"/>
+	</action>
+	
+	<action name="getScreenDetailsForEdit" class="com.finix.action.TheaterOwnerAction" method="getScreenDetailsForEdit">
+	<result name="success" type="json"/>
+	</action>
+
+	
+    <!-- created by ramya- 09-08-18 -->
+    <action name="movie-arrangement" class="com.finix.action.TheaterOwnerAction" method="getMovieArrangementDetails">
+	<result name="success" type="tiles">movieArrangementPageSuccess</result>
+	</action>
+	
+	<action name="addMovieScreenShowTimeDetail" class="com.finix.action.TheaterOwnerAction" method="setMovieScreenShowTimeDetail">
+	<result name="success" type="chain">movie-arrangement</result>
+	</action>
+   
+    <!-- ticket Counter Person Started -->
+    <action name="ticket-counter-login">
+	<result name="success" type="tiles">ticketCounterLoginSuccess</result>
+	</action>
+	
+	<action name="ticket-counter-person-login-submit"  class="com.finix.action.LoginAction" method="setLoginDetails">
+	<result name="ticket-counter-person" type="chain">viewMoviesInCounter</result>
+	<result name="ticket-counter-person-activation-failed" type="tiles">ticketCounterLoginSuccess</result>
+	</action>	
+		
+	<action name="ticket-counter-person-login-success" class="com.finix.action.TicketCounterAction" method="getTicketCounterPersonDashboardDetail">
+	<result name="success" type="tiles">ticketCounterPersonDashboardSuccess</result>
+	</action>
+	
+	<action name="getTicketCounterPersonProfileImage" class="com.finix.action.TicketCounterAction" method="getTicketCounterPersonProfileImage">
+	<result name="success" type="stream">
+		<param name="contentType">${contentType}</param>
+		<param name="inputName">inputStream</param>
+	</result>
+	</action>
+	
+	<action name="ticket-counter-logout" class="com.finix.action.LoginAction" method="setTicketCounterLogout">
+	<result name="success" type="tiles">ticketCounterLoginSuccess</result>
+	</action>
+	
+	<!-- theater-counter-profile-view -->
+	<action name="theater-counter-profile-view" class="com.finix.action.TicketCounterAction" method="getProfileView">
+	<result name="success" type="tiles">ticketCounterPersonProfileSuccess</result>
+	</action>
+	
+	<!-- view movies in ticket counter -->
+	<action name="viewMoviesInCounter" class="com.finix.action.TicketCounterAction" method="getMoviesOnTicketCounter">
+	<result name="success" type="tiles">viewMoviesInTicketCounter</result>
+	</action>
+	
+	<!-- getCounterMoviePoster -->
+	
+	<action name="getCounterMoviePoster" class="com.finix.action.TicketCounterAction" method="getMoviePoster">
+	<result name="success" type="stream">
+		<param name="contentType">${contentType}</param>
+		<param name="inputName">inputStream</param>
+	</result>
+	</action>
+	
+	<action name="getCounterMovieDetails" class="com.finix.action.TicketCounterAction" method="getCounterMovieDetails">
+	<result name="success">/pages/TicketCounterPerson/movie_theatre_layout.jsp</result>
+	</action>
+
+
+	<action name="getTheaterwiseScreenDetails" class="com.finix.action.TheaterOwnerAction" method="getTheaterwiseScreenDetails">
+	<result name="success" type="json"/>
+	</action>
+
+
+    <action name="delete-show-time" class="com.finix.action.TheaterOwnerAction" method="setDeleteShowTime">
+	<result name="success" type="chain">movie-arrangement</result>
+	</action>
+	
+	<action name="getDatewiseSearchShowDetails" class="com.finix.action.TheaterOwnerAction" method="getDatewiseSearchShowDetails">
+	<result name="success" type="json"/>
+	</action>
+	
+	
+	<!-- Govenment login started created by ramya -12-08-18 -->
+	
+	<action name="government-user-login">
+	<result name="success" type="tiles">governmentLoginSuccess</result>
+	</action>
+	
+	<action name="government-user-login-submit"  class="com.finix.action.LoginAction" method="setLoginDetails">
+	<result name="government-user" type="chain">government-user-login-success</result>
+	<result name="government-user-activation-failed" type="tiles">governmentLoginSuccess</result>
+	</action>	
+	
+	<action name="government-user-login-success" class="com.finix.action.GovenmentUserAction" method="getGovernmentUserDashboardDetail">
+	<result name="success" type="tiles">governmentUserDashboardSuccess</result>
+	</action>
+	
+	<action name="tax-detail">
+	<result name="success" type="tiles">governmentTaxDetailSuccess</result>
+	</action>
+	
+	<action name="government-user-logout" class="com.finix.action.LoginAction" method="setTicketCounterLogout">
+	<result name="success" type="tiles">governmentLoginSuccess</result>
+	</action>
+	
+ 
+    <action name="ticket-payment-submit" class="com.finix.action.TicketCounterAction" method="getTicketOrderSummaryDetail">
+	<result name="success" type="tiles">ticketOrderSummarySuccessPage</result>
+	</action>
+	
+	
+	<action name="getMoviePosterForCounterPerson" class="com.finix.action.TicketCounterAction" method="getMoviePosterForCounterPerson">
+	<result name="success" type="stream">
+		<param name="contentType">${contentType}</param>
+		<param name="inputName">inputStream</param>
+	</result>
+	</action>
+	
+	<action name="ticket-counter-forget-password">
+	<result name="success" type="tiles">ticketCounterForgetPasswordSuccess</result>
+	</action>
+	
+	<action name="government-forget-password">
+	<result name="success" type="tiles">governmentForgetPasswordSuccess</result>
+	</action>
+	  
+    <action name="view-movie" class="com.finix.action.TheaterOwnerAction" method="getAddedMovieDetails">
+	<result name="success" type="tiles">viewMovieSuccess</result>
+	</action>
+	
+	<!-- End User Start -->
+	
+	<action name="user-home-page">
+	<result name="success" type="tiles">userHomePageSuccess</result>
+	</action>
+	
+	<action name="setUserRegisterSubmit" class="com.finix.action.UserAction" method="setUserRegisterSubmit">
+	<result name="success" type="json"/>
+	</action>
+	
+	<action name="resendConfirmSMSForUser" class="com.finix.action.UserAction" method="resendConfirmSMS">
+	<result name="success" type="json"/>
+	</action>
+	
+	<action name="setAccountActivation" class="com.finix.action.UserAction" method="setAccountActivation">
+	<result name="success" type="json"/>
+	</action>
+	
+	<action name="setLoginForUser" class="com.finix.action.LoginAction" method="setLoginDetailsForUser">
+	<result name="success" type="json"/>
+	</action>
+	
+<!-- getCounterTheaterLayout -->
+	<action name="getCounterTheaterLayout"  class="com.finix.action.TicketCounterAction" method="getCounterTheaterLayout">
+	<result name="success">/pages/TicketCounterPerson/movie_theatre_layout.jsp</result>
+    </action>
+    
+    <action name="getCounterScreenTicketBookingLayout" class="com.finix.action.TicketCounterAction" method="getCounterScreenTicketBookingLayout">
+    	<result name="success" type="json"/>
+    </action>
+    
+   <!--  getTicketDetails -->
+   
+   <action name="getTicketDetails" class="com.finix.action.TicketCounterAction" method="getTicketDetails">
+    	<result name="success" type="json"/>
+    </action>
+    
+    <!-- get Ticket Sold Detail -->
+ <action name="getTicketSoldDetail" class="com.finix.action.TicketCounterAction" method="getTicketSoldDetail">
+   <result name="success" type="json"/>
+ </action>
+ 
+    <action name="getMovieDetails" class="com.finix.action.TicketCounterAction" method="getMovieDetails">
+    <result name="success" type="json"/>
+    </action> 
+ 
+	<action name="getMovieWiseScreenDetails" class="com.finix.action.TicketCounterAction" method="getMovieWiseScreenDetails">
+    <result name="success" type="json"/>
+    </action> 
+ 
+ 	<action name="forgetPasswordForUser" class="com.finix.action.UserAction" method="forgetPasswordForUser">
+	<result name="success" type="json"/>
+	</action>
+
+    <action name="getSearchDetails" class="com.finix.action.UserAction" method="getSearchCategoryDetail">
+    <result name="success" type="json"/>
+    </action>    
+
+   <action name="city-movies" class="com.finix.action.UserAction" method="getCitywiseAllMoviesDetail">
+   <result name="success" type="tiles">viewCityAllMovieSuccess</result>
+   </action>    
+    
+    <action name="getMasterMoviePoster" class="com.finix.action.UserAction" method="getMasterMoviePoster">
+	<result name="success" type="stream">
+		<param name="contentType">${contentType}</param>
+		<param name="inputName">inputStream</param>
+	</result>
+	</action>
+	
+	<action name="getMasterMovieBgPoster" class="com.finix.action.UserAction" method="getMasterMovieBgPoster">
+	<result name="success" type="stream">
+		<param name="contentType">${contentType}</param>
+		<param name="inputName">inputStream</param>
+	</result>
+	</action>
+	
+   <action name="movie-cinemas" class="com.finix.action.UserAction" method="getMoviewiseTheaterDetail">
+   <result name="success" type="tiles">viewMovieWiseTheaterDetail</result>
+   </action>
+   
+   <action name="theater-movies" class="com.finix.action.UserAction" method="getTheaterwiseMovieDetail">
+   <result name="success" type="tiles">viewTheaterWiseMovieDetail</result>
+   </action>
+   
+   <action name="dateFilterInTheaterwiseMovie" class="com.finix.action.UserAction" method="dateFilterInTheaterwiseMovie">
+   <result name="success" type="json"/>
+   </action>
+   
+   <action name="dateFilterInMoviewiseTheater" class="com.finix.action.UserAction" method="dateFilterInMoviewiseTheater">
+   <result name="success" type="json"/>
+   </action>
+   
+    
+   <action name="getLoginStatusDetail" class="com.finix.action.UserAction" method="getLoginStatusDetail">
+   <result name="success" type="json"/>
+   </action>
+   
+   <action name="user-logout" class="com.finix.action.LoginAction" method="setUserLogout">
+   <result name="success" type="tiles">userHomePageSuccess</result>
+   </action>
+
+<action name="ticket-show-layout" class="com.finix.action.UserAction" method="getTheatreLayout">
+   <result name="success"> /pages/EndUser/theatre_layout.jsp </result>
+   </action>
+   
+   <action name="getUserScreenTicketBookingLayout" class="com.finix.action.UserAction" method="getUserTheatreLayoutView">
+     <result name="success" type="json"/>
+   </action>
+   
+   <action name="user-ticket-payment-submit"  class="com.finix.action.UserAction" method="userTicketPaymentSubmit">
+    <result name="success" type="tiles">userTicketSummarySuccessPage</result>
+   </action>
+    
+    <action name="getUserTicketSoldDetail" class="com.finix.action.UserAction" method="getUserTicketSoldDetail">
+    <result name="success" type="json"/>
+    </action>
+   
+
+ <action name="city-cinemas" class="com.finix.action.UserAction" method="getCityCinemasDetail">
+   <result name="success" type="tiles">viewCitywiseCinemasDetail</result>
+   </action>
+
+   <action name="all-city-movies" class="com.finix.action.UserAction" method="getCitywiseAllMoviesDetail">
+   <result name="success" type="tiles">viewCityAllMovieSuccess</result>
+   </action>  
+  
+   <action name="search-movie" class="com.finix.action.UserAction" method="getMoviewiseTheaterDetail">
+   <result name="success" type="tiles">viewMovieWiseTheaterDetail</result>
+   </action>
+   
+   <action name="search-theater" class="com.finix.action.UserAction" method="getTheaterwiseMovieDetail">
+   <result name="success" type="tiles">viewTheaterWiseMovieDetail</result>
+   </action>
+
+ <action name="theatreTaxDetail" class="com.finix.action.TheaterOwnerAction" method="getTheatreOwnersTaxDetail">
+   <result name="success" type="json"/>
+   </action> 
+   
+   <action name="TheatreOwnerMovieDetails" class="com.finix.action.TheaterOwnerAction" method="getTheaterOwnerMoviewiseDetails">
+   <result name="success" type="json"/>
+   </action>
+   
+   <action name="TheatreOwnerMovieScreenWiseDetails" class="com.finix.action.TheaterOwnerAction" method="getTheaterOwnerMovieScreenwiseDetails">
+   <result name="success" type="json"/>
+   </action>
+   
+</package>
+</struts>
