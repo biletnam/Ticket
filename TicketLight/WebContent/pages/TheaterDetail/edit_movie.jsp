@@ -159,7 +159,7 @@ $(document).ready(function() {
                 <div class="col-md-8">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h2>Edit Movie</h2>
+                            <h2 class="font-bold">Edit Movie</h2>
                         </div>                           
                          <s:form action="editMovieDetailsSubmit" id="updateMovieDetailFormId" method="post" cssClass="form-horizontal" enctype="multipart/form-data" theme="simple">
                         <div class="ibox-content">
